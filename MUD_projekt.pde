@@ -2,6 +2,7 @@ Game game;
 boolean inputText=false;
 PFont font;
 PTextInput input;
+
 void setup() {
   size(400, 400);
   input = new PTextInput(20,40,200,30);
@@ -11,4 +12,8 @@ void setup() {
 
 void draw() {
   game.gameloop();
+}
+
+void keyPressed(){
+ input.keyPressed(key,keyCode); 
 }

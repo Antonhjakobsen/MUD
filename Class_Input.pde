@@ -30,4 +30,7 @@ class PTextInput {
   String getText() {
     return text;
   }
+  void reset(){
+   text = "";
+  }
 }

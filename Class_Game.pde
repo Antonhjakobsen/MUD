@@ -11,8 +11,17 @@ class Game {
     // Opret et eksempelrum
     Room r1 = new Room("You are in a dark cave.");
     Room r2 = new Room("You are in a sunny meadow.");
+    Room r3 = new Room("You are confused by the shape of the room");
+    Room r4 = new Room("You are in a cold and dark room");
+    Room r5 = new Room("You see 3 doors");
     r1.addExit("north", r2);
     r2.addExit("south", r1);
+    r3.addExit("east", r1);
+    r4.addExit("west", r1);
+    r5.addExit("south", r1);
+    r5.addExit("north", r2);
+    r5.addExit("west", r3);
+    r5.addExit("east", r4);
 
     // Tilføj items og enemies
     Item sword = new Item("Sword", "A sharp blade.", "Increase attack");
@@ -31,7 +40,7 @@ class Game {
 
   void start() {
     println("Game started!");
-    println(player.location.description);
+    println(player.currentRoom.roomDescription);
     
   }
 
