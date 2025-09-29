@@ -1,13 +1,14 @@
-  Player Player1;
-String text1 ="";
-String text2 ="";
-void setup(){
-  Player1 = new Player(100);
- size(400,400);
- 
+Game game;
+boolean inputText=false;
+PFont font;
+PTextInput input;
+void setup() {
+  size(400, 400);
+  input = new PTextInput(20,40,200,30);
+  game = new Game();
+  game.start();
 }
 
-void draw(){
-  if(text1==("n")){
-  }
+void draw() {
+  game.gameloop();
 }
