@@ -1,3 +1,7 @@
+
+import java.util.Map;
+import java.util.HashMap;
+
 Game game;
 boolean inputText=false;
 PFont font;
