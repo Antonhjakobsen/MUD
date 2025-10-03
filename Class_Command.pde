@@ -17,11 +17,11 @@ class Command {
         }
       }
       if (game.player.currentRoom.exits.size() > 0) {
-   for (m.<String, Room> rn : game.player.currentRoom.exits.entrySet()) {
-        System.out.println("Exit: " + rn.getKey() + " - Leads to: " + rn.getValue().roomDescription);
-    }
-}
-
+        for (Map.Entry<String, Room> rn : game.player.currentRoom.exits.entrySet()) {
+          System.out.println("Exit: " + rn.getKey()
+            + " - Leads to: " + rn.getValue().roomDescription);
+        }
+      }
     } else if (input.equals("items")) {
 
       if (game.player.currentRoom.items.size()>0) {
