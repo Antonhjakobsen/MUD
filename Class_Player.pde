@@ -1,26 +1,35 @@
 class Player {
   int hit;
+  int strength;
   String nameText;
-  ArrayList<Item> itemList;
+  ArrayList<Item> itemList = new ArrayList<Item>();
   Room currentRoom;
-  Player(String nameText, int hit) {
+  Player(String nameText, int hit, int strength) {
     this.nameText=nameText;
     this.hit=hit;
+    this.strength=strength;
   }
   void setLocation(Room room) {
     currentRoom=room;
   }
   void pickUpItem(Item item) {
     if (currentRoom.items.size()!=0) { //<>//
-      itemList.add(item);
+      game.player.itemList.add(item);
       currentRoom.items.remove(item);
     }
   }
   String getLastItem() {
     String msg = "Itim list tom";
-    if (itemList.size()!=0) {
-     msg=itemList.get(itemList.size()-1).itemName;
+    if (currentRoom.items.size()!=0) {
+     msg=currentRoom.items.get(currentRoom.items.size()-1).itemName;
     }
     return msg;
+  }
+  String itemListNames(){
+   String str="";
+   for(Item item:itemList){
+    str=str+item.itemName+", ";
+   } 
+   return str.substring(0,str.length()-2);
   }
 }
