@@ -57,7 +57,7 @@ class Command {
       }
       if (gamba==false) {
         print("You died ):");
-        game.player.hit=0;
+        game.player.hit=game.player.hit-100;
         noLoop();
       } else {
         game.player.hit=game.player.hit*2;
@@ -66,7 +66,7 @@ class Command {
       }
     } else if (input.equals("take") && game.player.currentRoom.items.size()>0) {
       game.player.pickUpItem(game.player.currentRoom.items.get(0));
-      println("You picked up a: " + game.player.getLastItem());
+      println("You pickedup a: " + game.player.getLastItem());
     } else if (input.equals("stats")) {
       println("hit="+game.player.strength);
       println("hit="+game.player.hit);
@@ -76,12 +76,6 @@ class Command {
       println("Your name is now: "+game.player.nameText);
     } else if (input.equals("inventory")) {
       println("The items you posses are: "+game.player.itemListNames());
-    } else if (input.equals("attack")) {
-      if(game.player.currentRoom.enemyList.size()>0){
-        println(game.player.currentRoom.enemyList);
-      }else{
-       println("No inimies in sight"); 
-      }
     } else {
       println("Command not recognized.");
     }

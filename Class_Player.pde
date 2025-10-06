@@ -2,7 +2,6 @@ class Player {
   int hit;
   int strength;
   String nameText;
-  int money;
   ArrayList<Item> itemList = new ArrayList<Item>();
   Room currentRoom;
   Player(String nameText, int hit, int strength) {
