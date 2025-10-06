@@ -29,7 +29,10 @@ class Command {
           println("Item: " + it.itemName + " - " + it.itemDescription);
         }
       }
-    } else if (input.equals("north") && game.player.currentRoom.exits.containsKey("north")) {
+    } else if(input.equals("help")){
+      println("You can use the following commands under certain conditions: help, look, items, north, south, east, west, up, down, portal, take, stats, inventory and set name *INSERT HERE*");
+    }
+    else if (input.equals("north") && game.player.currentRoom.exits.containsKey("north")) {
       game.player.setLocation(game.player.currentRoom.exits.get("north"));
       println("You moved north to: " + game.player.currentRoom.roomDescription);
     } else if (input.equals("south") && game.player.currentRoom.exits.containsKey("south")) {
@@ -48,22 +51,9 @@ class Command {
       game.player.setLocation(game.player.currentRoom.exits.get("down"));
       println("You moved east to: " + game.player.currentRoom.roomDescription);
     } else if (input.equals("portal") && game.player.currentRoom.exits.containsKey("portal")) {
-      boolean gamba;
-      float b=random(0, 1);
-      if (b>0.5) {
-        gamba=true;
-      } else {
-        gamba=false;
-      }
-      if (gamba==false) {
-        print("You died ):");
-        game.player.hit=game.player.hit-100;
-        noLoop();
-      } else {
-        game.player.hit=game.player.hit*2;
-        game.player.setLocation(game.player.currentRoom.exits.get("portal"));
-        println("You moved east to: " + game.player.currentRoom.roomDescription);
-      }
+      game.player.currentRoom.portal();
+      game.player.setLocation(game.player.currentRoom.exits.get("portal"));
+      println("You moved east to: " + game.player.currentRoom.roomDescription);
     } else if (input.equals("take") && game.player.currentRoom.items.size()>0) {
       game.player.pickUpItem(game.player.currentRoom.items.get(0));
       println("You pickedup a: " + game.player.getLastItem());
@@ -71,11 +61,13 @@ class Command {
       println("hit="+game.player.strength);
       println("hit="+game.player.hit);
       println("name="+game.player.nameText);
-    } else if (input.substring(0,9).equals("set name ")) {
-      game.player.nameText=input.substring(8);
-      println("Your name is now: "+game.player.nameText);
     } else if (input.equals("inventory")) {
       println("The items you posses are: "+game.player.itemListNames());
+    } else if (input.length()>8) {
+      if (input.substring(0, 8).equals("set name")) {
+        game.player.nameText=input.substring(8);
+        println("Your name is now: "+game.player.nameText);
+      }
     } else {
       println("Command not recognized.");
     }

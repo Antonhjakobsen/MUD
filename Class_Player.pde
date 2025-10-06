@@ -12,12 +12,6 @@ class Player {
   void setLocation(Room room) {
     currentRoom=room;
   }
-  void pickUpItem(Item item) {
-    if (currentRoom.items.size()!=0) { //<>//
-      game.player.itemList.add(item);
-      currentRoom.items.remove(item);
-    }
-  }
   String getLastItem() {
     String msg = "Itim list tom";
     if (currentRoom.items.size()!=0) {
@@ -25,11 +19,31 @@ class Player {
     }
     return msg;
   }
+  void pickUpItem(Item item) {
+    if (currentRoom.items.size()!=0) { //<>//
+      game.player.itemList.add(item);
+      currentRoom.items.remove(item);
+    }
+  }
+  
   String itemListNames(){
    String str="";
    for(Item item:itemList){
     str=str+item.itemName+", ";
-   } 
-   return str.substring(0,str.length()-2);
+   }
+   if(itemList.size()>=1){ 
+     str=str.substring(0,str.length()-2);
+   }
+   //return str.substring(0,str.length()-2);
+   return str;
+  }
+  void death(){
+   game.player.hit=0;
+   println("You died");
+     size(0,0);
+  }
+  void attack(){
+   game.player.currentRoom.enemyList.clear();
+   println("YOU DEFEATED THE ENEMY, WOOOOOW");
   }
 }

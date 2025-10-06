@@ -44,7 +44,7 @@ class Game {
     r11.addExit("north",r12);
     // Tilføj items og enemies
     Item sword = new Item("Sword", "A sharp blade.", "Increase attack");
-    Item hammer = new Item("hammer", "Realy heavy.", "Decrease attack");
+    Item hammer = new Item("Hammer", "Really heavy.", "Decrease attack");
     Enemy goblin = new Enemy("Goblin", 30, 5);
 
     r1.addItem(sword);
@@ -78,7 +78,7 @@ class Game {
     rooms.add(r11);
     
 
-    player.setLocation(r2);
+    player.setLocation(r5);
   }
 
   void start() {

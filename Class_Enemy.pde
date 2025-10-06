@@ -8,4 +8,12 @@ class Enemy{
    this.strength=strength;
   }
   
+  void attack(){
+   game.player.hit=game.player.hit-strength; 
+  }
+  
+  void takeDamage(){
+   health=health-game.player.strength; 
+ }
+ 
 }

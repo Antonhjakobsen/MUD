@@ -25,4 +25,18 @@ class Room { //<>//
   void addEnemy(Enemy enemy) {
     enemyList.add(enemy);
   }
+  void portal(){
+   boolean gamba;
+      float b=random(0, 1);
+      if (b>0.5) {
+        gamba=true;
+      } else {
+        gamba=false;
+      }
+      if (gamba==false) {
+        game.player.death();
+      } else {
+        game.player.hit=game.player.hit*2;
+      }
+  }
 }

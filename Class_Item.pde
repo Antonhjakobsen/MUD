@@ -7,6 +7,9 @@ this.itemName=itemName;
 this.itemDescription=itemDescription;
 this.effect=effect;
  }
-  
+  void use(){
+   println("items used");
+   game.player.itemList.clear();
+  }
   
 }
